@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<main id="posts-index">
+    <h2>All Posts</h2>
+    <ul>
+        <% posts.forEach(function(p) { %>
+            <li>
+                <%= p.title %>
+                <span><a href="/posts/<%= p._id %>">Details</a></span>
+            </li>
+
+        <% }); %>
+    </ul>
+</main>
+
+<%- include('../partials/footer') %>
