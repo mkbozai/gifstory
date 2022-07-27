@@ -1,4 +1,7 @@
 const Post = require('../models/post');
+const fetch = require('node-fetch');
+const apiKey = process.env.GIPHY_KEY;
+const searchURL = 'api.giphy.com/v1/gifs/search';
 
 module.exports = {
     new: newPost,
@@ -22,3 +25,9 @@ function create(req, res) {
 function newPost(req, res) {
     res.render('posts/new');
 };
+
+
+    // const search = req.query.search;
+    // fetch(`${searchURL}?api_key=${apiKey}&q=${search}&limit=2`)
+    // .then(res => res.json())
+    // .then()
