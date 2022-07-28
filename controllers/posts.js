@@ -8,36 +8,13 @@ module.exports = {
     create,
     index,
     show,
+    edit,
+    update,
     delete: deletePost,
-    edit
 };
 
-function edit(req, res) {
-    req.body.user = req.user._id;
-    Post.findOne({_id: req.params.id, }, function(err, post) {
-        res.render('posts/edit', {post})
-    });
-};
-
-function deletePost(req, res) {
-    req.body.user = req.user._id;
-    Post.findOneAndDelete({}, function(err) {
-            res.redirect('/posts');
-        }
-    );
-};
-
-function show(req, res) {
-    Post.findById(req.params.id)
-    .exec(function(err, post) {
-        res.render('posts/show', { post });
-    });
-};
-
-function index(req,res) {
-    Post.find({}, function(err, posts) {
-        res.render('posts/index', { posts });
-    });
+function newPost(req, res) {
+    res.render('posts/new');
 };
 
 function create(req, res) {
@@ -50,6 +27,39 @@ function create(req, res) {
     });
 };
 
-function newPost(req, res) {
-    res.render('posts/new');
+function index(req,res) {
+    Post.find({}, function(err, posts) {
+        res.render('posts/index', { posts });
+    });
+};
+
+function show(req, res) {
+    Post.findById(req.params.id)
+    .exec(function(err, post) {
+        res.render('posts/show', { post });
+    });
+};
+
+function edit(req, res) {
+    Post.findOne({_id: req.params.id, user: req.user}, function(err, post) {
+        res.render('posts/edit', {post})
+    });
+};
+
+function update(req, res) {
+    Post.findOneAndUpdate({_id: req.params.id, user: req.user},
+        req.body,
+        {new: true},
+         function(err, post) {
+            if (err || !post) return res.redirect('/posts');
+            res.redirect(`/posts/${post._id}`);
+         }
+    );
+};
+
+function deletePost(req, res) {
+    Post.findOneAndDelete({_id: req.params.id, user: req.user}, function(err) {
+            res.redirect('/posts');
+        }
+    );
 };
