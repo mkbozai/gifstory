@@ -13,9 +13,8 @@ module.exports = {
 
 function deletePost(req, res) {
     req.body.user = req.user._id;
-    id = req.params.id;
     Post.findOneAndDelete(
-        {id: req.params.id, user: req.user._id}, function(err) {
+        {ser: req.user._id}, function(err) {
             res.redirect('/posts');
         }
     );
