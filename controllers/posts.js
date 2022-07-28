@@ -8,13 +8,20 @@ module.exports = {
     create,
     index,
     show,
-    delete: deletePost
+    delete: deletePost,
+    edit
+};
+
+function edit(req, res) {
+    req.body.user = req.user._id;
+    Post.findOne({_id: req.params.id, }, function(err, post) {
+        res.render('posts/edit', {post})
+    });
 };
 
 function deletePost(req, res) {
     req.body.user = req.user._id;
-    Post.findOneAndDelete(
-        {ser: req.user._id}, function(err) {
+    Post.findOneAndDelete({}, function(err) {
             res.redirect('/posts');
         }
     );

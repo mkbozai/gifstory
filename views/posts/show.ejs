@@ -1,19 +1,13 @@
 <%- include('../partials/header') %>
 
 <main>
-    
-        <section id="show-img">
-            <img src="<%= post.imgUrl %>" alt="<%= post.title %>">
-        </section>
-        <section id="show-info">
-            <div>Title: </div>
-            <div><%= post.title %></div>
-            <div>About: </div>
-            <div></div>
-            <div>History: </div>
-            <div></div>
-        </section>
-     
+    <article>
+        <img src="<%= post.imgUrl %>" alt="<%= post.title %>">
+        <p>Title: <%= post.title %></p>
+        <p>About: <%= post.about %></p>
+        <p>History: <%= post.history %></p>
+        <a href="/posts/<%= post._id %>/edit">EDIT</a>
+    </article>
 </main>
 
 <%- include('../partials/footer') %>
