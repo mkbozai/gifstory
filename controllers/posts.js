@@ -7,6 +7,25 @@ module.exports = {
     new: newPost,
     create,
     index,
+    show,
+    delete: deletePost
+};
+
+function deletePost(req, res) {
+    req.body.user = req.user._id;
+    id = req.params.id;
+    Post.findOneAndDelete(
+        {id: req.params.id, user: req.user._id}, function(err) {
+            res.redirect('/posts');
+        }
+    );
+};
+
+function show(req, res) {
+    Post.findById(req.params.id)
+    .exec(function(err, post) {
+        res.render('posts/show', { post });
+    });
 };
 
 function index(req,res) {
@@ -16,6 +35,9 @@ function index(req,res) {
 };
 
 function create(req, res) {
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
     Post.create(req.body, function(err) {
         if (err) return res.render('posts/new');
         res.redirect('/posts');
@@ -25,9 +47,3 @@ function create(req, res) {
 function newPost(req, res) {
     res.render('posts/new');
 };
-
-
-    // const search = req.query.search;
-    // fetch(`${searchURL}?api_key=${apiKey}&q=${search}&limit=2`)
-    // .then(res => res.json())
-    // .then()
