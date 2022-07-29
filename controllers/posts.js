@@ -14,7 +14,7 @@ module.exports = {
 };
 
 function newPost(req, res) {
-    res.render('posts/new');
+    res.render('posts/new', {title: 'Create Post'});
 };
 
 function create(req, res) {
@@ -29,20 +29,20 @@ function create(req, res) {
 
 function index(req,res) {
     Post.find({}, function(err, posts) {
-        res.render('posts/index', { posts });
+        res.render('posts/index', { title: 'All Posts', posts });
     });
 };
 
 function show(req, res) {
     Post.findById(req.params.id)
     .exec(function(err, post) {
-        res.render('posts/show', { post });
+        res.render('posts/show', { title: 'Details', post });
     });
 };
 
 function edit(req, res) {
     Post.findOne({_id: req.params.id, user: req.user}, function(err, post) {
-        res.render('posts/edit', {post})
+        res.render('posts/edit', {title: 'Edit Post', post})
     });
 };
 
