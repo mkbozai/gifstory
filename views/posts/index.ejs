@@ -3,10 +3,10 @@
 <main id="posts-index">
     <% posts.forEach(function(p) { %>
         <article>
-            <img src="<%= p.imgUrl %>" alt="<%= p.title %>">
+            <p><img src="<%= p.imgUrl %>" alt="<%= p.title %>">&nbsp;<span><img id="user-img" src="<%= p.userAvatar %>" alt="user-avatar">&nbsp;<%= p.userName %></span></p>
             <p>Title: <%= p.title %></p>
             <a href="/posts/<%= p._id %>">DETAILS</a>
-        </article>
+        </article><br>
         <form action="/posts/<%= p._id %>?_method=DELETE" method="POST" id="delete-post">
             <button type="submit">DELETE POST</button>
         </form><br><br><br>

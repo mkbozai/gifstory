@@ -1,17 +1,19 @@
 <%- include('../partials/header') %>
 
-<img src="<%= post.imgUrl %>" alt="<%= post.title %>">
-<form action="/posts/<%= post._id %>?_method=PUT" method="POST">
-    <label>Title: 
-        <input name="title" id="edit-title" value="<%= post.title %>">
-    </label>
-    <label>About: 
-        <textarea name="about" id="edit-about" cols="30" rows="10"><%= post.about %></textarea>
-    </label>
-    <label>History: 
-        <textarea name="history" id="edit-history" cols="30" rows="10"><%= post.history %></textarea>
-    </label>
-    <button id="update-btn" type="submit">UPDATE POST</button>
-</form>
+<main class="edit-page">
+    <img src="<%= post.imgUrl %>" id="edit-img" alt="<%= post.title %>">
+    <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
+            <label>Title: 
+                <input name="title" id="edit-title" value="<%= post.title %>">
+            </label>
+            <label>About: 
+                <textarea name="about" id="edit-about" cols="30" rows="10"><%= post.about %></textarea>
+            </label>
+            <label>History: 
+                <textarea name="history" id="edit-history" cols="30" rows="10"><%= post.history %></textarea>
+            </label>
+            <button id="update-btn" type="submit">UPDATE POST</button>
+        </form>
+</main>
 
 <%- include('../partials/footer') %>
