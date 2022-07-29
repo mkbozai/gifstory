@@ -3,13 +3,13 @@ GIFStory is an application that allows people to share their favorite memes and 
 
 ## Screenshots
 
-![Check out all the cool posts!](https://imgur.com/a/3YK6LsI)
+![Check out all the cool posts!](https://i.imgur.com/1UWZdmt.jpg)
 
-![Think Patrick!](https://imgur.com/a/LdASHgY)
+![Think Patrick!](https://i.imgur.com/REiIwwd.png)
 
-![Let's change some things up!](https://imgur.com/a/wj1axU4)
+![Let's change some things up!](https://i.imgur.com/xipTJGW.png)
 
-![Log in and your nav bar will expand!](https://imgur.com/a/JgSr40C)
+![Log in and your nav bar will expand!](https://i.imgur.com/gNY11vR.jpg)
 
 ## Technologies Used
 * Node.js
