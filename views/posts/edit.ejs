@@ -2,15 +2,15 @@
 
 <h2>Edit Post</h2>
 <img src="<%= post.imgUrl %>" alt="<%= post.title %>">
-<form action="/posts/<%= post._id %>/?_method=PUT" method="POST">
+<form action="/posts/<%= post._id %>?_method=PUT" method="POST">
     <label>Title: 
-        <input name="titleEdit" id="edit-title" value="<%= post.title %>">
+        <input name="title" id="edit-title" value="<%= post.title %>">
     </label>
     <label>About: 
-        <textarea name="aboutEdit" id="edit-about" cols="30" rows="10"><%= post.about %></textarea>
+        <textarea name="about" id="edit-about" cols="30" rows="10"><%= post.about %></textarea>
     </label>
     <label>History: 
-        <textarea name="historyEdit" id="edit-history" cols="30" rows="10"><%= post.history %></textarea>
+        <textarea name="history" id="edit-history" cols="30" rows="10"><%= post.history %></textarea>
     </label>
     <button id="update-btn" type="submit">UPDATE POST</button>
 </form>
