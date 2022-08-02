@@ -7,7 +7,9 @@
         <p>About: <%= post.about %></p>
         <p>History: <%= post.history %></p>
     </article>
+    <% if (user?._id.equals(post.user)) { %>
     <a href="/posts/<%= post._id %>/edit">EDIT</a>
+    <% } %>
 </section>
 
 <br><br><h3>Comments</h3>
