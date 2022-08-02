@@ -1,7 +1,9 @@
 <%- include('../partials/header') %>
 
 <form id="new-post-form" action="/posts" method="POST">
-    <input type="text" name="imgUrl" id="img-url" placeholder="Enter URL Here">
+    <label>URL: 
+        <input type="text" name="imgUrl" id="img-url" placeholder="Enter URL Here">
+    </label>
     <label>Title: 
         <input type="text" name="title">
     </label>

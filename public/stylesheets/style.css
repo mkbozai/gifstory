@@ -98,3 +98,8 @@ table td {
   padding: 10px;
   text-align: center;
 }
+
+#new-post-form {
+  display: grid;
+  grid-gap: 10px;
+}
