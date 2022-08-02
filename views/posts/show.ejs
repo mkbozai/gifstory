@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<main id="show-post">
+<section id="show-post">
     <img src="<%= post.imgUrl %>" alt="<%= post.title %>">
     <article>
         <p>Title: <%= post.title %></p>
@@ -8,6 +8,37 @@
         <p>History: <%= post.history %></p>
     </article>
     <a href="/posts/<%= post._id %>/edit">EDIT</a>
-</main>
+</section>
+
+<br><br><h3>Comments</h3>
+
+<% if (user) { %>
+    <form action="/posts/<%= post._id %>/comments" method="POST">
+        <label>Comment: </label>
+        <textarea name="text" cols="30" rows="10"></textarea>
+        <button type="submit">ADD COMMENT</button>
+    </form>
+<% } %>
+
+<% if (post.comments.length) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% post.comments.forEach(function(c) { %>
+                <tr>
+                    <td><img src="<%= c.userAvatar %>" alt="avatar"><%= c.userName %></td>
+                    <td><%= c.text %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <h5>No Comments Yet</h5>
+<% } %>
 
 <%- include('../partials/footer') %>

@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 const commentSchema = new Schema ({
     text: String,
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
+    userName: String,
+    userAvatar: String,
 });
 
 const postSchema = new Schema({
