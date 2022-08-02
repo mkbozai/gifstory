@@ -15,11 +15,11 @@
 <% if (user) { %>
     <form action="/posts/<%= post._id %>/comments" method="POST">
         <label>Comment: </label>
-        <textarea name="text" cols="30" rows="10"></textarea>
+        <textarea name="text" cols="45" rows="7"></textarea>
         <button type="submit">ADD COMMENT</button>
     </form>
 <% } %>
-
+<br>
 <% if (post.comments.length) { %>
     <table>
         <thead>
@@ -31,7 +31,7 @@
         <tbody>
             <% post.comments.forEach(function(c) { %>
                 <tr>
-                    <td><img src="<%= c.userAvatar %>" alt="avatar"><%= c.userName %></td>
+                    <td class="comment-user"><img src="<%= c.userAvatar %>" alt="avatar"><%= c.userName %></td>
                     <td><%= c.text %></td>
                 </tr>
             <% }); %>
